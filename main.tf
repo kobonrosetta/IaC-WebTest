@@ -1,3 +1,10 @@
+terraform {
+
+required_version = ">= 0.12.26"
+
+}
+
+
 provider "aws" {
   region = "us-east-2"
 }
@@ -13,7 +20,7 @@ resource "aws_instance" "web_server" {
 
   user_data = <<-EOF
               #!/bin/bash
-              echo "Hello, World" > index.html
+              echo "Hello, World!" > index.html
               nohup busybox httpd -f -p "${var.server_port}" &
               EOF
 }

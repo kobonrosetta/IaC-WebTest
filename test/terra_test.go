@@ -7,14 +7,14 @@ import (
 
   http_helper "github.com/gruntwork-io/terratest/modules/http-helper"
 
-  "github.com/gruntwork-io/terraform"
+  "github.com/gruntwork-io/terratest/modules/terraform"
 )
 
 func TestTerraformAwsHelloWorldExample(t *testing.T) {
   t.Parallel()
 
   terraformOptions := &terraform.Options{
-    TerraformDir: "/Github Projects/terra",
+    TerraformDir: "../",
   }
 
 
