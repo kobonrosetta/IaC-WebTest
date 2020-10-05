@@ -25,7 +25,7 @@ commands:
       - run:
           name: 'Run Tests'
           command: |
-            cd test && go test -v -timeout 30m
+            make test
 jobs:
   run-tests:
     <<: *defaults
