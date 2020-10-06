@@ -1,31 +1,39 @@
-jobs:
-  test:
-    executor: go/default
+version: 2.1
+
+executors:
+  golang-terraform:
+    docker:
+      - image: circleci/golang:stretch
+
+defaults: &defaults
+  executor: golang-terraform
+
+commands:
+  install-common-packages:
+    steps:
+      - run:
+          name: 'Install required packages'
+          command: |
+            sudo wget --quiet https://releases.hashicorp.com/terraform/0.13.4/terraform_0.13.4_linux_amd64.zip && \
+            sudo unzip terraform_0.13.4_linux_amd64.zip && \
+            sudo mv terraform /usr/local/bin/ && \
+            sudo rm terraform_0.13.4_linux_amd64.zip
+  run-tests:
     steps:
       - checkout
-      - go/load-cache
-      - go/mod-download
-      - go/save-cache
+      - install-common-packages
       - run:
-          command: |
-            curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-            python get-pip.py
-            pip install ansible
-            wget --quiet https://releases.hashicorp.com/terraform/0.12.20/terraform_0.12.20_linux_amd64.zip
-            sudo unzip terraform_0.12.20_linux_amd64.zip -d /usr/local/bin
-          name: Install Terraform
-      - run:
-          name: Run tests
+          name: 'Run Tests'
           command: |
             make test
-orbs:
-  go: circleci/go@0.2.0
-version: 2.1
+jobs:
+  run-tests:
+    <<: *defaults
+    steps:
+      - run-tests
 workflows:
-  default:
-    jobs:
-      - test
-
   version: 2
-
-  #
+  test-terraform:
+    jobs:
+      - run-tests
+      
