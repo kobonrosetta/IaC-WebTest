@@ -14,6 +14,14 @@ import (
 
 const regionOverrideEnvVarName = "us-east-2"
 
+func TestAWSregion (t *testing.T) {
+  t.Parallel()
+  terraformOptions := &terraform.Options{
+    TerraformDir: "../",
+ }
+
+ AWS_region = regionOverrideEnvVarName
+
 
 ///////////
 
