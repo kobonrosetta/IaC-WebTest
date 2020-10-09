@@ -9,14 +9,6 @@ import (
 
   "github.com/gruntwork-io/terratest/modules/terraform"
 
-  "os"
-
-  "github.com/aws/aws-sdk-go/aws"
-  "github.com/aws/aws-sdk-go/service/ec2"
-  "github.com/gruntwork-io/terratest/modules/collections"
-  "github.com/gruntwork-io/terratest/modules/logger"
-  "github.com/gruntwork-io/terratest/modules/random"
-  "github.com/gruntwork-io/terratest/modules/testing"
   "github.com/stretchr/testify/assert"
 )
 //////////////
