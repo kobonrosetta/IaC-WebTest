@@ -8,6 +8,9 @@ import (
   http_helper "github.com/gruntwork-io/terratest/modules/http-helper"
 
   "github.com/gruntwork-io/terratest/modules/terraform"
+  "github.com/gruntwork-io/terratest/modules/random"
+  "github.com/gruntwork-io/terratest/modules/aws"
+  "github.com/stretchr/testify/assert"
 )
 //////////////
 
