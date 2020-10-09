@@ -8,18 +8,10 @@ import (
   http_helper "github.com/gruntwork-io/terratest/modules/http-helper"
 
   "github.com/gruntwork-io/terratest/modules/terraform"
-
-  "github.com/stretchr/testify/assert"
 )
 //////////////
 
-func GetRandomRegion(t *Testing.T, approvedRegions []string, forbiddenRegions []string) string {
-	region, err := GetRandomRegionE(t, approvedRegions, forbiddenRegions)
-	if err != nil {
-		t.Fatal(err)
-	}
-	return region
-}
+
 
 func TestGetRandomRegionExcludesForbiddenRegions(t *testing.T) {
 	t.Parallel()
