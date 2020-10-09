@@ -1,4 +1,4 @@
-package test, aws
+package test
 
 import (
   "fmt"
