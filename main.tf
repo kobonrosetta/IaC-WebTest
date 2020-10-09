@@ -9,7 +9,7 @@ resource "aws_instance" "web_server" {
   vpc_security_group_ids = [aws_security_group.secgroup1.id]
 
   tags = {
-    Name = "var.instance_name"
+    Name = "Web-Server"
   }
 
   user_data = <<-EOF
@@ -39,9 +39,3 @@ resource "aws_instance" "web_server" {
     type        = number
     default     = 8080
   }
-
-  variable "instance_name" {
-  description = "The Name tag to set for the EC2 Instance."
-  type        = string
-  default     = "web_server"
-}
