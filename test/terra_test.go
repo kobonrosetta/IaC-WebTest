@@ -9,11 +9,7 @@ import (
 
   "github.com/gruntwork-io/terratest/modules/terraform"
 )
-//////////////
 
-
-
-///////////
 
 func TestTerraformAwsHelloWorldExample(t *testing.T) {
   t.Parallel()
@@ -31,5 +27,5 @@ func TestTerraformAwsHelloWorldExample(t *testing.T) {
   publicIp := terraform.Output(t, terraformOptions, "public_ip")
 
   url := fmt.Sprintf("http://%s:8080", publicIp)
-  http_helper.HttpGetWithRetry(t, url, nil, 200, "Hello, World!", 30, 5*time.Second)
+  http_helper.HttpGetWithRetry(t, url, nil, 200, "Website is Online", 30, 5*time.Second)
 }
