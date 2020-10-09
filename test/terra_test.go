@@ -14,13 +14,8 @@ import (
 
 const regionOverrideEnvVarName = "us-east-2"
 
-func TestAWSregion (t *testing.T) {
-  t.Parallel()
-  terraformOptions := &terraform.Options{
-    TerraformDir: "../",
- }
 
- AWS_region = regionOverrideEnvVarName
+
 
 
 ///////////
@@ -36,6 +31,8 @@ func TestTerraformAwsHelloWorldExample(t *testing.T) {
   defer terraform.Destroy(t, terraformOptions)
 
   terraform.InitAndApply(t, terraformOptions)
+
+  regionOverrideEnvVarName := "us-east-2"
 
   publicIp := terraform.Output(t, terraformOptions, "public_ip")
 
