@@ -8,6 +8,15 @@ import (
   http_helper "github.com/gruntwork-io/terratest/modules/http-helper"
 
   "github.com/gruntwork-io/terratest/modules/terraform"
+  // added beta testing
+  "os"
+
+  "github.com/aws/aws-sdk-go/aws"
+  "github.com/aws/aws-sdk-go/service/ec2"
+  "github.com/gruntwork-io/terratest/modules/collections"
+  "github.com/gruntwork-io/terratest/modules/logger"
+  "github.com/gruntwork-io/terratest/modules/random"
+  "github.com/gruntwork-io/terratest/modules/testing"
 )
 
 func TestTerraformAwsHelloWorldExample(t *testing.T) {
@@ -22,8 +31,17 @@ func TestTerraformAwsHelloWorldExample(t *testing.T) {
 
   terraform.InitAndApply(t, terraformOptions)
 
-  publicIp := terraform.Output(t, terraformOptions, "public_ip")
+  publicIp := b terraform.Output(t, terraformOptions, "public_ip")
 
   url := fmt.Sprintf("http://%s:8080", publicIp)
   http_helper.HttpGetWithRetry(t, url, nil, 200, "Hello, World!", 30, 5*time.Second)
+
+  // testing beta testing below this
+
+  approvedRegions := []string{"us-east-2"}
+  forbiddenRegions := []string{"us-west-2", "ap-northeast-2", "ca-central-1", "us-east-1",] "us-west-1", "us-west-2", "eu-west-1", "eu-west-2", "eu-central-1", "ap-southeast-1", "ap-northeast-1", "ap-northeast-2", "ap-south-1"}
+
+  for i := 0; i < 1000; i++ {
+  randomRegion := GetRandomRegion(t, approvedRegions, forbiddenRegions)
+  assert.NotContains(t, forbiddenRegions, randomRegion)
 }
