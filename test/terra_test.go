@@ -9,8 +9,6 @@ import (
 
   "github.com/gruntwork-io/terratest/modules/terraform"
   "github.com/gruntwork-io/terratest/modules/random"
-  "github.com/gruntwork-io/terratest/modules/aws"
-  "github.com/stretchr/testify/assert"
 )
 //////////////
 
