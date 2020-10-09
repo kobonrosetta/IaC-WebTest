@@ -27,9 +27,9 @@ func TestTerraformAwsHelloWorldExample(t *testing.T) {
 
   terraform.InitAndApply(t, terraformOptions)
 
-  const AWS_Region = "us-east-2"
+  AWS_Region := "us-east-2"
 
-  const publicIp := terraform.Output(t, terraformOptions, "public_ip")
+  publicIp := terraform.Output(t, terraformOptions, "public_ip")
 
   url := fmt.Sprintf("http://%s:8080", publicIp)
   http_helper.HttpGetWithRetry(t, url, nil, 200, "Hello, World!", 30, 5*time.Second)
