@@ -27,7 +27,7 @@ func TestTerraformAwsHelloWorldExample(t *testing.T) {
 
   terraform.InitAndApply(t, terraformOptions)
 
-  AWS := "us-east-2"
+  AWS = "us-east-2"
 
   publicIp := terraform.Output(t, terraformOptions, "public_ip")
 
