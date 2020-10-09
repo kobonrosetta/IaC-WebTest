@@ -13,7 +13,7 @@ import (
 )
 //////////////
 
-func GetRandomRegion(t testing.TestingT, approvedRegions []string, forbiddenRegions []string) string {
+func GetRandomRegion(t *Testing.T, approvedRegions []string, forbiddenRegions []string) string {
 	region, err := GetRandomRegionE(t, approvedRegions, forbiddenRegions)
 	if err != nil {
 		t.Fatal(err)
