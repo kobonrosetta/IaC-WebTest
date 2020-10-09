@@ -82,8 +82,3 @@ func TestTerraformAwsExample(t *testing.T) {
 	testingTag, containsTestingTag := instanceTags["testing"]
 	assert.True(t, containsTestingTag)
 	assert.Equal(t, "testing-tag-value", testingTag)
-
-	// Verify that our expected name tag is one of the tags
-	nameTag, containsNameTag := instanceTags["Name"]
-	assert.True(t, containsNameTag)
-	assert.Equal(t, expectedName, nameTag)
