@@ -14,12 +14,12 @@ resource "aws_instance" "web_server" {
 
   user_data = <<-EOF
               #!/bin/bash
-              echo "" > index.html
+              echo "website is online" > index.html
               nohup busybox httpd -f -p "${var.server_port}" &
               EOF
 }
 
-  resource "aws_security_group"Website is Online"secgroup1" {
+  resource "aws_security_group" "secgroup1" {
     name = "terraform-allow-traffic"
 
     ingress {
