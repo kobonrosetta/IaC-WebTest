@@ -43,7 +43,7 @@ func TestTerraformAwsExample(t *testing.T) {
 
 	// Give this EC2 Instance a unique ID for a name tag so we can distinguish it from any other EC2 Instance running
 	// in your AWS account
-	expectedName := fmt.Sprintf("terratest-aws-example-%s", random.UniqueId())
+	expectedName := fmt.Sprintf("terra2%s", random.UniqueId())
 
 	// Pick a random AWS region to test in. This helps ensure your code works in all regions.
 	awsRegion := aws.GetRandomStableRegion(t, nil, nil)
@@ -51,7 +51,7 @@ func TestTerraformAwsExample(t *testing.T) {
 	// website::tag::1::Configure Terraform setting path to Terraform code, EC2 instance name, and AWS Region.
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
-		TerraformDir: "../examples/terraform-aws-example",
+		TerraformDir: "../",
 
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
