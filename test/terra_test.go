@@ -33,7 +33,7 @@ func TestGetRandomRegionExcludesForbiddenRegions(t *testing.T) {
 	t.Parallel()
 
 	approvedRegions := []string{"us-east-2"}
-	forbiddenRegions := []string{"us-west-2", "ap-northeast-2", "ca-central-1", "us-east-1", "us-west-1", "us-west-2", "eu-west-1", "eu-west-2", "eu-central-1", "ap-southeast-1", "ap-northeast-1", "ap-northeast-2", "ap-south-1""}
+	forbiddenRegions := []string{"us-west-2", "ap-northeast-2", "ca-central-1", "us-east-1", "us-west-1", "us-west-2", "eu-west-1", "eu-west-2", "eu-central-1", "ap-southeast-1", "ap-northeast-1", "ap-northeast-2", "ap-south-1"}
 
 	for i := 0; i < 1000; i++ {
 		randomRegion := GetRandomRegion(t, approvedRegions, forbiddenRegions)
