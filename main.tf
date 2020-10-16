@@ -1,6 +1,6 @@
 
 provider "aws" {
-  region = "us-east-2"
+  region = var.region
 }
 
 resource "aws_instance" "web_server" {
@@ -9,7 +9,7 @@ resource "aws_instance" "web_server" {
   vpc_security_group_ids = [aws_security_group.secgroup1.id]
 
   tags = {
-    Name = "Web-Server"
+    Name = var.instance_name
   }
 
   user_data = <<-EOF
@@ -39,3 +39,7 @@ resource "aws_instance" "web_server" {
     type        = number
     default     = 8080
   }
+
+output "instance_id" {
+  value = aws_instance.web_server.id
+}

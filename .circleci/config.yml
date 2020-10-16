@@ -25,6 +25,7 @@ commands:
       - run:
           name: 'Run Tests'
           command: |
+            make acctest
             make test
 jobs:
   run-tests:
