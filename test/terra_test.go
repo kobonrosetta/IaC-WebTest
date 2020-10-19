@@ -13,8 +13,7 @@ import (
 	"github.com/gruntwork-io/terratest/modules/random"
 )
 
-
-func master_test_function(t *testing.T) {
+func TestTerraformAwsHelloWorldExample(t *testing.T) {
   t.Parallel()
   approvedRegions := []string{"us-east-2"}
   awsRegion := aws.GetRandomRegion(t, approvedRegions, nil)
