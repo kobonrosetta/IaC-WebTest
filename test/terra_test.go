@@ -14,23 +14,23 @@ import (
 )
 
 
-func TestTerraformAwsHelloWorldExample(t *testing.T) {
+func master_test_function(t *testing.T) {
   t.Parallel()
   approvedRegions := []string{"us-east-2"}
   awsRegion := aws.GetRandomRegion(t, approvedRegions, nil)
-  expectedName := fmt.Sprintf("terratest-%s", random.UniqueId())  
+  expectedName := fmt.Sprintf("terratest-%s", random.UniqueId())
   terraformOptions := &terraform.Options{
     TerraformDir: "../",
 
          Vars: map[string]interface{}{
           "instance_name": expectedName,
-          "test_label": "yes",           
+          "test_label": "yes",
           "region":awsRegion,
        },
        EnvVars: map[string]string{
         "AWS_DEFAULT_REGION": awsRegion,
-     },      
-  
+     },
+
   }
 
 
